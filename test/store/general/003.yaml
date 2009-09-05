@@ -1,0 +1,10 @@
+--- !ruby/object:MultipleChoice 
+choices: 
+- TX
+- CA
+- AK
+- HI
+- RI
+correct_answer: AK
+response: 
+text: Which state has the most land area?

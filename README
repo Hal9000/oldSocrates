@@ -1,0 +1,35 @@
+Socrates README
+---------------
+
+Quick start:
+
+    ruby bigbang.rb    # create the data store
+    ruby socrates.rb   # run a session
+
+Files:  See below.
+
+
+README   
+  - This file you're reading
+
+base.rb  
+  - Most important class definitions
+
+datastore.rb
+  - A clunky storage technique based on filesystem + YAML
+
+bigbang.rb
+  - Utility to create the sample data store in one swoop.
+
+bbhelper.rb
+  - Methods needed for big bang
+
+bbdata.rb
+  - The "real guts" of the big bang
+
+ui_dumbtext.rb
+  - A pluggable UI that is strictly text-based
+
+socrates.rb
+  - The "main program" that will run a Q&A session; it does not yet
+    keep any stats or do any fancy algorithms.

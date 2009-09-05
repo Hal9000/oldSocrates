@@ -1,0 +1,2 @@
+--- !ruby/object:Computed 
+code: "  x = y = 0\n  x = rand(100) until x > 10\n  y = rand(100) until y > 10\n  # Return: question, correct answer\n  [\"What is #{x} * #{y}?\",\"#{x*y}\"]\n"

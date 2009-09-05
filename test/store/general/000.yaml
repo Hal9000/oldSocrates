@@ -1,0 +1,4 @@
+--- !ruby/object:Question 
+correct_answer: "42"
+response: 
+text: What is the meaning of life?
