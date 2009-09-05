@@ -1,2 +1,0 @@
---- !ruby/object:Computed 
-code: "  z = rand(30)\n  s1 = \"What is #{z} squared?\"\n  s2 = \"#{z**2}\"\n  [s1, s2]\n"
