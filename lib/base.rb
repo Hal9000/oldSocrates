@@ -1,13 +1,18 @@
 class Session
+
+  attr_reader :store
+
   def initialize(many=10, types=:all, tree="/")
     @many = many   # How many questions asked
     @types = types # array of kinds of questions
     @tree = tree   # starting point in hierarchy
-    @store = DataStore.new
+# STDOUT.puts "--- in base.rb: pwd = #{Dir.pwd}"
+    @store = DataStore.open("store")
     if types == :all
-      types = [Question, FIB, TF, MultipleChoice, Computed]
+      types = [Question, FIB, TF, MultipleChoice, Computed, PooledMultipleChoice]
     end
     @questions = @store.load_all(tree)
+    @mcpools = @store.mcpools
     @questions.reject! {|x| ! types.include?(x.class) }
   end
 
@@ -26,6 +31,7 @@ end
 class Question     # superclass
   # Later: add stats like times missed, times correct, last asked, ...
   
+  attr_accessor :topic
   attr_accessor :text, :correct_answer
 
   def initialize(text, correct_answer)
@@ -59,7 +65,16 @@ end
 
 ############
 
-class PooledMultipleChoice < Question    
+class MCPool
+  attr_reader :choices
+  def initialize(name,options,choices)
+    @name, @options, @choices = name, options, choices
+  end
+end
+
+############
+
+class PooledMultipleChoice < MultipleChoice # Question    
   # Later worry about: pooling, reordering or not, ...
   def initialize(text, correct_answer, pool)
     super(text, correct_answer)

@@ -1,3 +1,5 @@
+#!/usr/bin/ruby
+
 $: << "lib"
 require 'base'
 require 'datastore'
@@ -8,8 +10,8 @@ require 'ui_dumbtext'  # could be other pluggable UI
 
 # Default: Ask every question in the tree
 
-session = Session.new("test/store")
+$session = Session.new("store")
 
-session.start
+$session.start
 
 # No recording of stats is done yet

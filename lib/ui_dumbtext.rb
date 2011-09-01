@@ -1,6 +1,7 @@
 class Question
 
   def ask          # GUI would just grab @text...
+#   puts "self = #{self.inspect}"
     puts @text
     get_response
   end
@@ -109,7 +110,23 @@ end
 
 ############
 
-class PooledMultpleChoice < Question    
+class PooledMultipleChoice < MultipleChoice
+  def ask
+    puts @text
+    label = "a"
+    @labels = {}
+    pool = YAML.load(File.read("#{$session.store.real_path(@topic)}/_mcpools/#@pool.yaml"))
+    @choices = pool.choices
+    @choices.each do |c| 
+      @labels[label] = c
+      puts "  #{label}. #{c}"
+      label = label.succ
+    end
+    STDOUT.print "=> "
+    STDOUT.flush
+    get_response
+  end
+
 end
 
 ############

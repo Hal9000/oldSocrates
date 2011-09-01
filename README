@@ -1,6 +1,9 @@
 Socrates README
 ---------------
 
+STATUS: Left in inconsistent state -- working on adding multiple choice
+        "pools" -- see bbhelper.rb #mcpool etc.
+
 Quick start:
 
     ruby bigbang.rb    # create the data store
